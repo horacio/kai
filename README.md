@@ -1,48 +1,38 @@
 # uttu (`)
 
-cli pomodoro client
+Pomodoro cli/client
 
 ## Features 
 
-| Feature   | description                       | Command                    |
-|-----------|-----------------------------------|----------------------------|
-| timer     | countdown timer                   | `uttu start 25`             |
-| sessions  | named collection of pomodoros     | `uttu todo "Fix login bug"` |
-| analytics | track your work habbits           | `uttu log`                  |
-| Todo      | to decide on the day’s activities | `uttu todo today`           |
-| controls  | interactive manager and commands  | ``                         |
+|       | desc                                             | cmd                                        |
+|-------|--------------------------------------------------|--------------------------------------------|
+| clock | pomodoro timer                                   | `uttu 25` `uttu 4`                         |
+| sesh  | named collection of pomodoros                    | `uttu sesh "Fix login bug"`                |
+| log   | track your work habbits                          | `uttu log`                                 |
 
 ### Usage
 
-if you are familiar with the pomodoro
-technique for time management then uttu will fit like a 
-glove. but uttu is very simple even worms use uttu (`) so
-it should not be difficult for a human to use uttu.
+if you are familiar with the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
+technique then uttu will fit like a 
+glove but uttu is very simple even if you don't know about the Pomodoro Technique and simply
+want a simple way to manage and track your time. 
 
-uttu uses git as the database this means we allot of
-the benefits of git.
+The Pomodoro is the inspiration, but uttu is a very basic timer that tracks work sessions 
+it allows you to create your own work system based on your workflow. 
 
-In the world of uttu only 3 entities exist:
-
-- **todo**
-- **time**
-- **log**
-
-#### todo
+#### sesh
 Creating todo lists:
 
 create a new todo list and save it with 
 todays date:
 
 ```bash
-uttu todo today 
+uttu sesh today 
 ```
 
 create a new todo list and save it with
-a custom date:
+a custom name:
 
 ```bash
-uttu todo "Front-end stuff"
+uttu sesh "Front-end stuff"
 ```
-
-#### time
