@@ -23,7 +23,7 @@ impl Todo {
         };
 
         let mut user_input = String::new();
-        println!("\n\nkai todo");
+        println!("\n\niwah todo");
         println!("++------------------------------++\ntype and 'enter' to input a task\n's' to save all inputed tasks
 'q' to cancel and quit\n++------------------------------++\n\n");
 
