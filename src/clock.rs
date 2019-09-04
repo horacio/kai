@@ -11,15 +11,15 @@ pub fn countdown(count_from: i32) -> Result<(), ()>{
         
         for i in (1..=count_from).rev() {
             term.clear_screen().unwrap();
-            println!("{}", style("FOCUS").yellow());        
-            println!("{}", style("---------------------").yellow());
-            println!("{}", style("[COUNTDOWN STARTED]").red());
+            println!("{}", style("FOCUS TIME").yellow().bold());        
+            println!("{}", style("-------------------").yellow().bold());
+            println!("{}", style("[COUNTDOWN STARTED]").red().dim());
             
-            println!("{}", style(format!("⏰ {}min remaining...", i)).blue());
-            thread::sleep(Duration::from_millis(60000));
+            println!("{}", style(format!("⏰ {}min remaining...", i)).blue().italic());
+            thread::sleep(Duration::from_millis(60));
         }
-        println!("{}", style("[COUNTDOWN ENDED]").green());
-        println!("{}", style("---------------------").yellow());
+        println!("{}", style("[COUNTDOWN ENDED]").green().dim());
+        println!("{}", style("-------------------").yellow().bold());
     });
 
     handle.join().unwrap();
