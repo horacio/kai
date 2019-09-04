@@ -1,32 +1,55 @@
-use crate::date::Date;
+use chrono::{Local, Date};
 use std::error::Error;
 use std::fs::File;
 use std::io;
 use std::io::prelude::*;
 use std::path::Path;
 
+use console::style;
+use console::Term;
+
 #[derive(Debug)]
-pub struct Todo {
-    title: String,
-    date: String,
+pub struct Todo<'a>{
+    title: &'a str,
+    date: &'a str,
     tasks: Vec<String>,
 }
 
-impl Todo {
-    pub fn new(title: String) {
-        let date = Date::now().unwrap().date;
+impl<'a> Todo<'a> {
+    pub fn new(title: &'a str) {
+        let date :Date<Local> = Local::now().date();
 
         let mut todo = Todo {
             title: title,
-            date: date.clone(),
+            date: &date.to_string(),
             tasks: Vec::new(),
         };
 
         let mut user_input = String::new();
-        println!("\n\niwah todo");
-        println!("++------------------------------++\ntype and 'enter' to input a task\n's' to save all inputed tasks
-'q' to cancel and quit\n++------------------------------++\n\n");
+        let term = Term::stdout();
 
+        term.clear_screen().unwrap();
+        println!("\n{}", style("[TODO]").yellow().bold());
+        println!(
+            "{}",
+            style("++-----------------------------------------------------++")
+                .yellow()
+                .bold()
+        );
+        println!("Type task and click on the {} key to input a task,\nType the {} key to save all inputed tasks,\nType the {} key to cancel and quit",
+                 style("enter").bold(),
+                 style("s").bold(),
+                 style("q").bold()
+        );
+        
+        println!(
+            "{}",
+            style("++-----------------------------------------------------++")
+                .yellow()
+                .bold()
+        );
+        
+        println!("\n📝 Enter tasks for session ({}): ", style(format!("{}", title)).bold());
         loop {
             io::stdin()
                 .read_line(&mut user_input)
@@ -34,7 +57,7 @@ impl Todo {
 
             match user_input.as_ref() {
                 "\n" | "q\n" | "Q\n" => {
-                    println!("Quit");
+                    println!("{}", style("Quit").red());
                     break;
                 }
                 "s\n" | "S\n" => {
@@ -52,7 +75,7 @@ impl Todo {
 }
 
 fn create_todo_file(todo: &Todo) {
-    let path = format!("kai/todo/{}.md", &todo.title);
+    let path = format!("iwah/todo/{}.md", &todo.title);
     let path = Path::new(&path);
     let display = path.display();
     let mut todo_output = format!("# Todo {}\n{}", todo.title, todo.date);
@@ -70,6 +93,6 @@ fn create_todo_file(todo: &Todo) {
 
     match file.write_all(todo_output.as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
-        Ok(_) => println!("successfully wrote to {}", display),
+        Ok(_) => println!("{}", style(format!("\n💾 successfully wrote to {}\n" ,display)).green()),
     }
 }
