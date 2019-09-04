@@ -15,15 +15,9 @@ impl App {
         let title = input.cmd.clone();
 
         match (input.stage.as_ref(), input.cmd.as_ref()) {
-            ("todo", "today") => {
-                let date: Date<Local> = Local::today();
-                todo::Todo::new(&date.to_string());
-            }
+            ("todo", "today") => todo::Todo::new(&Local::today().to_string()),
             ("todo", title) => todo::Todo::new(title),
-            ("clock", "today") => {
-                countdown(5).unwrap();
-                controls::Ctrl::ctrl_pomo();
-            }
+            ("clock", "today") => countdown(5).unwrap(),
             (&_, &_) => (),
         }
 
