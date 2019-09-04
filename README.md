@@ -4,11 +4,11 @@ Pomodoro cli/client
 
 ## Features 
 
-|       | desc                     | cmd                         |
-|-------|--------------------------|-----------------------------|
-| clock | pomodoro/countdown timer | `iwah clock 25`             |
-| sesh  | collection of pomodoros  | `iwah sesh "Fix login bug"` |
-| log   | track your work habbits  | `iwah log`                  |
+|       | desc                                                | cmd                         |
+|-------|-----------------------------------------------------|-----------------------------|
+| clock | pomodoro/countdown timer                            | `iwah clock 25`             |
+| todo  | collection of tasks/pomodoros (in todo list format) | `iwah todo "Fix login bug"` |
+| log   | track your work habbits                             | `iwah log`                  |
 
 ### Usage
 
@@ -17,16 +17,16 @@ technique then `iwah` will fit like a glove, but `iwah` is very simple even if y
 a simple way to manage and track your time.
 
 ---
-#### sesh
+#### todo
 
 ```bash
 # create a new todo list and save it with todays date:
-iwah sesh today 
+iwah todo today 
 ```
 
 ```bash
 # create a new todo list and save it with a custom name:
-iwah sesh "Front-end stuff"
+iwah todo "Front-end stuff"
 ```
 ---
 #### clock

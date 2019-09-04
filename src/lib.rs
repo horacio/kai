@@ -1,7 +1,7 @@
 use std::error::Error;
 
 pub mod controls;
-pub mod sesh;
+pub mod todo;
 pub mod date;
 pub mod clock;
 
@@ -16,8 +16,8 @@ impl App{
         let title = input.cmd.clone();
         
         match (input.stage.as_ref(), input.cmd.as_ref()) {
-            ("sesh", "today") => sesh::Sesh::new(Date::now().unwrap().date),
-            ("sesh", title) => sesh::Sesh::new(String::from(title)),
+            ("todo", "today") => todo::Todo::new(Date::now().unwrap().date),
+            ("todo", title) => todo::Todo::new(String::from(title)),
             ("clock", "today") => countdown(5).unwrap(),
             (&_, &_) => (),
         }

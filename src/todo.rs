@@ -6,17 +6,17 @@ use std::io::prelude::*;
 use std::path::Path;
 
 #[derive(Debug)]
-pub struct Sesh {
+pub struct Todo {
     title: String,
     date: String,
     tasks: Vec<String>,
 }
 
-impl Sesh {
+impl Todo {
     pub fn new(title: String) {
         let date = Date::now().unwrap().date;
 
-        let mut todo = Sesh {
+        let mut todo = Todo {
             title: title,
             date: date.clone(),
             tasks: Vec::new(),
@@ -51,11 +51,11 @@ impl Sesh {
     }
 }
 
-fn create_todo_file(todo: &Sesh) {
+fn create_todo_file(todo: &Todo) {
     let path = format!("kai/todo/{}.md", &todo.title);
     let path = Path::new(&path);
     let display = path.display();
-    let mut todo_output = format!("# Sesh {}\n{}", todo.title, todo.date);
+    let mut todo_output = format!("# Todo {}\n{}", todo.title, todo.date);
 
     for task in &todo.tasks {
         todo_output = format!("{}\n- [ ] {}", todo_output, task);
