@@ -1,4 +1,4 @@
-use chrono::{Local, Date};
+use chrono::{Date, Local};
 use std::error::Error;
 use std::fs::File;
 use std::io;
@@ -9,7 +9,7 @@ use console::style;
 use console::Term;
 
 #[derive(Debug)]
-pub struct Todo<'a>{
+pub struct Todo<'a> {
     title: &'a str,
     date: &'a str,
     tasks: Vec<String>,
@@ -17,7 +17,7 @@ pub struct Todo<'a>{
 
 impl<'a> Todo<'a> {
     pub fn new(title: &'a str) {
-        let date :Date<Local> = Local::now().date();
+        let date: Date<Local> = Local::now().date();
 
         let mut todo = Todo {
             title: title,
@@ -41,15 +41,18 @@ impl<'a> Todo<'a> {
                  style("s").bold(),
                  style("q").bold()
         );
-        
+
         println!(
             "{}",
             style("++-----------------------------------------------------++")
                 .yellow()
                 .bold()
         );
-        
-        println!("\n📝 Enter tasks for session ({}): ", style(format!("{}", title)).bold());
+
+        println!(
+            "\n📝 Enter tasks for session ({}): ",
+            style(format!("{}", title)).bold()
+        );
         loop {
             io::stdin()
                 .read_line(&mut user_input)
@@ -93,6 +96,9 @@ fn create_todo_file(todo: &Todo) {
 
     match file.write_all(todo_output.as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
-        Ok(_) => println!("{}", style(format!("\n💾 successfully wrote to {}\n" ,display)).green()),
+        Ok(_) => println!(
+            "{}",
+            style(format!("\n💾 successfully wrote to {}\n", display)).green()
+        ),
     }
 }
