@@ -20,7 +20,10 @@ impl App {
                 todo::Todo::new(&date.to_string());
             }
             ("todo", title) => todo::Todo::new(title),
-            ("clock", "today") => countdown(5).unwrap(),
+            ("clock", "today") => {
+                countdown(5).unwrap();
+                controls::Ctrl::process_pomo();
+            }
             (&_, &_) => (),
         }
 
