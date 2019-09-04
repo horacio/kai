@@ -1,21 +1,23 @@
 use std::thread;
 use std::time::Duration;
 
-use console::Term;
 use console::style;
+use console::Term;
 
-pub fn countdown(count_from: i32) -> Result<(), ()>{
+pub fn countdown(count_from: i32) -> Result<(), ()> {
     let term = Term::stdout();
-    
+
     let handle = thread::spawn(move || {
-        
         for i in (1..=count_from).rev() {
             term.clear_screen().unwrap();
-            println!("{}", style("FOCUS TIME").yellow().bold());        
+            println!("{}", style("FOCUS TIME").yellow().bold());
             println!("{}", style("-------------------").yellow().bold());
             println!("{}", style("[COUNTDOWN STARTED]").red().dim());
-            
-            println!("{}", style(format!("⏰ {}min remaining...", i)).blue().italic());
+
+            println!(
+                "{}",
+                style(format!("⏰ {}min remaining...", i)).blue().italic()
+            );
             thread::sleep(Duration::from_millis(60));
         }
         println!("{}", style("[COUNTDOWN ENDED]").green().dim());

@@ -10,7 +10,7 @@ fn main() {
         process::exit(1);
     });
 
-    let app = iwah::App{};
+    let app = iwah::App {};
 
     if let Err(e) = app.run(cmd) {
         eprintln!("Application error {}", e);
