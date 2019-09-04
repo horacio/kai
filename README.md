@@ -20,17 +20,13 @@ a simple way to manage and track your time.
 #### sesh
 Creating todo lists:
 
-create a new todo list and save it with 
-todays date:
-
 ```bash
+# create a new todo list and save it with todays date:
 iwah sesh today 
 ```
 
-create a new todo list and save it with
-a custom name:
-
 ```bash
+# create a new todo list and save it with a custom name:
 iwah sesh "Front-end stuff"
 ```
 ---
@@ -39,17 +35,19 @@ iwah sesh "Front-end stuff"
 work on today's session:
 
 ```bash
-# clock defaults to 25 minutes
+# work on today's session for 25min
 iwah clock "today"
 ```
+
 ```bash
-# set clock to custom time (minutes)
+# work on today's session for 40min
 iwah clock -m 40 "today"
 ```
 
 work on a custom session:
 
 ```bash
+# work on "Fix frontend" session for 60min
 iwah clock -m 60 "Fix frontend"
 ```
 ___
