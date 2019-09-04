@@ -1,27 +1,33 @@
 use std::error::Error;
 
 pub mod controls;
-pub mod todo;
+pub mod sesh;
 pub mod utils;
+pub mod clock;
 
 use utils::date::Date;
+use clock::countdown;
 
-pub fn run(input: controls::Ctrl) -> Result<(), Box<dyn Error>> {
+pub struct App{}
 
-    let title = input.cmd.clone();
-    
-    match (input.stage.as_ref(), input.cmd.as_ref()) {
-        ("todo", "today") => {
-            todo::Todo::new(Date::now().unwrap().date);
-        },
-        ("todo", title) => {
-            todo::Todo::new(String::from(title));
-        },
-        ("start", "today") => {
-            
-        },
-        (&_, &_) => (),
+impl App{
+    pub fn run(&self, input: controls::Ctrl) -> Result<(), Box<dyn Error>> {
+
+        let title = input.cmd.clone();
+        
+        match (input.stage.as_ref(), input.cmd.as_ref()) {
+            ("sesh", "today") => sesh::Sesh::new(Date::now().unwrap().date),
+            ("sesh", title) => sesh::Sesh::new(String::from(title)),
+            ("clock", "today") => {
+                if let () = countdown(5).unwrap() {
+                    
+                } else {
+                    ()
+                }
+            },
+            (&_, &_) => (),
+        }
+
+        Ok(())
     }
-
-    Ok(())
 }
