@@ -53,7 +53,7 @@ impl<'a> Todo<'a> {
             "\n📝 Enter tasks for session ({}): ",
             style(format!("{}", title)).bold()
         );
-        controls::Ctrl::process_todo(todo);
+        controls::Ctrl::ctrl_todo(todo);
     }
 
     pub fn create_todo_file(&self) {

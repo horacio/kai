@@ -22,7 +22,7 @@ impl App {
             ("todo", title) => todo::Todo::new(title),
             ("clock", "today") => {
                 countdown(5).unwrap();
-                controls::Ctrl::process_pomo();
+                controls::Ctrl::ctrl_pomo();
             }
             (&_, &_) => (),
         }

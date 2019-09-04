@@ -20,7 +20,7 @@ impl Ctrl {
         Ok(Ctrl { stage, cmd })
     }
 
-    pub fn process_todo(mut todo: Todo) {
+    pub fn ctrl_todo(mut todo: Todo) {
         let mut user_input = String::new();
         loop {
             io::stdin()
@@ -44,6 +44,6 @@ impl Ctrl {
             user_input = String::new();
         }
     }
-    
-    pub fn process_pomo() {}
+
+    pub fn ctrl_pomo() {}
 }
