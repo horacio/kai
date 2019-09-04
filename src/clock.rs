@@ -11,7 +11,7 @@ pub fn countdown(count_from: i32) -> Result<(), ()> {
         for i in (1..=count_from).rev() {
             term.clear_screen().unwrap();
             println!("{}", style("FOCUS TIME").yellow().bold());
-            println!("{}", style("-------------------").yellow().bold());
+            println!("{}", style("++---------------++").yellow().bold());
             println!("{}", style("[COUNTDOWN STARTED]").red().dim());
 
             println!(
@@ -21,7 +21,7 @@ pub fn countdown(count_from: i32) -> Result<(), ()> {
             thread::sleep(Duration::from_millis(60));
         }
         println!("{}", style("[COUNTDOWN ENDED]").green().dim());
-        println!("{}", style("-------------------").yellow().bold());
+        println!("{}", style("++---------------++").yellow().bold());
     });
 
     handle.join().unwrap();
