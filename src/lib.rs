@@ -1,12 +1,12 @@
 use std::error::Error;
+extern crate chrono;
 
 pub mod clock;
 pub mod controls;
-pub mod date;
 pub mod todo;
 
 use clock::countdown;
-use date::Date;
+use chrono::{Local, Date};
 
 pub struct App {}
 
@@ -15,8 +15,11 @@ impl App {
         let title = input.cmd.clone();
 
         match (input.stage.as_ref(), input.cmd.as_ref()) {
-            ("todo", "today") => todo::Todo::new(Date::now().unwrap().date),
-            ("todo", title) => todo::Todo::new(String::from(title)),
+            ("todo", "today") => {
+                let date :Date<Local> = Local::today();
+                todo::Todo::new(&date.to_string());
+            }
+            ("todo", title) => todo::Todo::new(title),
             ("clock", "today") => countdown(5).unwrap(),
             (&_, &_) => (),
         }
