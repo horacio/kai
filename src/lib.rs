@@ -2,10 +2,10 @@ use std::error::Error;
 
 pub mod controls;
 pub mod sesh;
-pub mod utils;
+pub mod date;
 pub mod clock;
 
-use utils::date::Date;
+use date::Date;
 use clock::countdown;
 
 pub struct App{}
