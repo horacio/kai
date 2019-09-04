@@ -18,7 +18,6 @@ a simple way to manage and track your time.
 
 ---
 #### sesh
-Creating todo lists:
 
 ```bash
 # create a new todo list and save it with todays date:
@@ -32,8 +31,6 @@ iwah sesh "Front-end stuff"
 ---
 #### clock
 
-work on today's session:
-
 ```bash
 # work on today's session for 25min
 iwah clock "today"
@@ -43,8 +40,6 @@ iwah clock "today"
 # work on today's session for 40min
 iwah clock -m 40 "today"
 ```
-
-work on a custom session:
 
 ```bash
 # work on "Fix frontend" session for 60min
