@@ -4,6 +4,8 @@ use std::time::Duration;
 use console::style;
 use console::Term;
 
+use crate::controls::Ctrl;
+    
 pub fn countdown(count_from: i32) -> Result<(), ()> {
     let term = Term::stdout();
 
@@ -25,5 +27,7 @@ pub fn countdown(count_from: i32) -> Result<(), ()> {
     });
 
     handle.join().unwrap();
+
+    Ctrl::ctrl_pomo();    
     Ok(())
 }
