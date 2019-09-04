@@ -39,13 +39,17 @@ iwah sesh "Front-end stuff"
 work on today's session:
 
 ```bash
-iwah clock "today" 25
+# clock defaults to 25 minutes
+iwah clock "today"
+```
+```bash
+# set clock to custom time (minutes)
+iwah clock -m 40 "today"
 ```
 
 work on a custom session:
 
 ```bash
-iwah clock "Fix frontend" 60
+iwah clock -m 60 "Fix frontend"
 ```
-
 ___
