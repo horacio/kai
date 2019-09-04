@@ -13,17 +13,17 @@ use crate::controls;
 pub struct Todo<'a> {
     pub title: &'a str,
     pub date: &'a str,
-    pub tasks: Box<Vec<String>>,
+    pub tasks: Vec<String>,
 }
 
 impl<'a> Todo<'a> {
     pub fn new(title: &'a str) {
         let date: Date<Local> = Local::now().date();
 
-        let mut todo = Todo {
-            title: title,
+        let todo = Todo {
+            title,
             date: &date.to_string(),
-            tasks: Box::new(Vec::new()),
+            tasks: Vec::new(),
         };
 
         let term = Term::stdout();
@@ -51,7 +51,7 @@ impl<'a> Todo<'a> {
 
         println!(
             "\n📝 Enter tasks for session ({}): ",
-            style(format!("{}", title)).bold()
+            style(title.to_string()).bold()
         );
         controls::Ctrl::ctrl_todo(todo);
     }
