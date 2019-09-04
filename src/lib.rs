@@ -18,13 +18,7 @@ impl App{
         match (input.stage.as_ref(), input.cmd.as_ref()) {
             ("sesh", "today") => sesh::Sesh::new(Date::now().unwrap().date),
             ("sesh", title) => sesh::Sesh::new(String::from(title)),
-            ("clock", "today") => {
-                if let () = countdown(5).unwrap() {
-                    
-                } else {
-                    ()
-                }
-            },
+            ("clock", "today") => countdown(5).unwrap(),
             (&_, &_) => (),
         }
 
