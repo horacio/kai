@@ -28,11 +28,11 @@ impl Ctrl {
                 .expect("Failed to read line");
 
             match user_input.as_ref() {
-                "\n" | "q\n" | "Q\n" => {
+                "q\n" | "Q\n" => {
                     println!("{}", style("Quit").red());
                     break;
                 }
-                "s\n" | "S\n" => {
+                "s\n" | "S\n" | "\n"=> {
                     todo.create_todo_file();
                     break;
                 }
@@ -45,5 +45,7 @@ impl Ctrl {
         }
     }
 
-    pub fn ctrl_pomo() {}
+    pub fn ctrl_pomo() {
+        
+    }
 }
