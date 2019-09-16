@@ -1,8 +1,8 @@
 use std::error::Error;
 
 pub mod clock;
-pub mod date;
 pub mod controls;
+pub mod date;
 pub mod todo;
 
 use clock::countdown;

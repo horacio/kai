@@ -1,4 +1,3 @@
-use chrono::{Date, Local};
 use std::error::Error;
 use std::fs::File;
 use std::io::prelude::*;
@@ -8,6 +7,7 @@ use console::style;
 use console::Term;
 
 use crate::controls;
+use crate::date::Date;
 
 #[derive(Debug)]
 pub struct Todo<'a> {
@@ -18,7 +18,7 @@ pub struct Todo<'a> {
 
 impl<'a> Todo<'a> {
     pub fn new(title: &'a str) {
-        let date: Date<Local> = Local::now().date();
+        let date = Date::today();
 
         let todo = Todo {
             title,
@@ -60,7 +60,7 @@ impl<'a> Todo<'a> {
         let path = format!("iwah/todo/{}.md", self.title);
         let path = Path::new(&path);
         let display = path.display();
-        let mut todo_output = format!("# Todo {}\n{}", self.title, self.date);
+        let mut todo_output = format!("# Todo {}", self.title);
 
         for task in self.tasks.iter() {
             todo_output = format!("{}\n- [ ] {}", todo_output, task);

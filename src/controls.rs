@@ -32,7 +32,7 @@ impl Ctrl {
                     println!("{}", style("Quit").red());
                     break;
                 }
-                "s\n" | "S\n" | "\n"=> {
+                "s\n" | "S\n" | "\n" => {
                     todo.create_todo_file();
                     break;
                 }
@@ -45,7 +45,5 @@ impl Ctrl {
         }
     }
 
-    pub fn ctrl_pomo() {
-        
-    }
+    pub fn ctrl_pomo() {}
 }
