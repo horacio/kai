@@ -6,7 +6,7 @@ use console::Term;
 
 use crate::controls::Ctrl;
 
-pub fn countdown(count_from: i32) -> Result<(), ()> {
+pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
     let term = Term::stdout();
 
     let handle = thread::spawn(move || {
