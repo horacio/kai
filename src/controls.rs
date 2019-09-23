@@ -45,5 +45,5 @@ impl Ctrl {
         }
     }
 
-    pub fn ctrl_pomo() {}
+    pub fn ctrl_pomo(todo: &str) {}
 }

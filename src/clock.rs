@@ -14,7 +14,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
             term.clear_screen().unwrap();
             println!("{}", style("FOCUS TIME").yellow().bold());
             println!("{}", style("++---------------++").yellow().bold());
-            println!("{}", style("[COUNTDOWN STARTED]").red().dim());
+            println!("{}", style("[CLOCK STARTED]").red().dim());
 
             println!(
                 "{}",
@@ -28,6 +28,36 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
 
     handle.join().unwrap();
 
-    Ctrl::ctrl_pomo();
+    // Menu after clock ends
+    let term = Term::stdout();
+
+    term.clear_screen().unwrap();
+    println!(
+        "\n[{} {}] stopped",
+        style("IWAH").yellow().bold(),
+        style("clock").yellow().dim()
+    );
+    println!(
+        "{}",
+        style("++-----------------------------------------------------++")
+            .yellow()
+            .bold()
+    );
+
+    println!("Type the {} key to save repeat session,", style("r").bold());
+    println!(
+        "Type the {} key to check of a task from the todo,",
+        style("c").bold()
+    );
+    println!("Type the {} key to cancel and quit", style("q").bold());
+
+    println!(
+        "{}",
+        style("++-----------------------------------------------------++")
+            .yellow()
+            .bold()
+    );
+
+    Ctrl::ctrl_pomo(todo);
     Ok(())
 }

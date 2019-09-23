@@ -29,7 +29,11 @@ impl<'a> Todo<'a> {
         let term = Term::stdout();
 
         term.clear_screen().unwrap();
-        println!("\n{}", style("[TODO]").yellow().bold());
+        println!(
+            "[{} {}] new",
+            style("IWAH").yellow().bold(),
+            style("todo").dim().yellow()
+        );
         println!(
             "{}",
             style("++-----------------------------------------------------++")
@@ -77,7 +81,7 @@ impl<'a> Todo<'a> {
             Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
             Ok(_) => println!(
                 "{}",
-                style(format!("\n💾 successfully wrote to {}\n", display)).green()
+                style(format!("\n💾 successfully wrote to {}\\n", display)).green()
             ),
         }
     }
