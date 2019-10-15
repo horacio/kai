@@ -1,9 +1,9 @@
 use std::error::Error;
-
 pub mod clock;
 pub mod controls;
 pub mod date;
 pub mod todo;
+pub mod db;
 
 const POMO_DEFAULT_TIME: i32 = 25;
 
