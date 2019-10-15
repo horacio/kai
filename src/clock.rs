@@ -18,7 +18,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
 
             println!(
                 "{}",
-                style(format!("⏰ {}min remaining...", i)).blue().italic()
+                style(format!("{} min remaining...", i)).blue().italic()
             );
             thread::sleep(Duration::from_millis(60));
         }
@@ -32,11 +32,13 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
     let term = Term::stdout();
 
     term.clear_screen().unwrap();
+
     println!(
         "\n[{} {}] stopped",
         style("sesh").yellow().bold(),
         style("clock").yellow().dim()
     );
+    
     println!(
         "{}",
         style("++-----------------------------------------------------++")
@@ -45,10 +47,12 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
     );
 
     println!("Type the {} key to save repeat session,", style("r").bold());
+
     println!(
         "Type the {} key to check of a task from the todo,",
         style("c").bold()
     );
+    
     println!("Type the {} key to cancel and quit", style("q").bold());
 
     println!(
@@ -59,5 +63,6 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
     );
 
     Ctrl::ctrl_pomo(todo);
+    
     Ok(())
 }
