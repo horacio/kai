@@ -5,7 +5,7 @@ use console::Term;
 
 use crate::controls;
 use crate::date;
-    
+
 #[derive(Serialize, Deserialize)]
 pub struct Todo<'a> {
     pub title: &'a str,
@@ -31,14 +31,14 @@ impl<'a> Todo<'a> {
             style("sesh").yellow().bold(),
             style("todo").dim().yellow()
         );
-        
+
         println!(
             "{}",
             style("++-----------------------------------------------------++")
                 .yellow()
                 .bold()
         );
-        
+
         println!("Type task and click on the {} key to input a task,\nType the {} key to save all inputed tasks,\nType the {} key to cancel and quit",
                  style("enter").bold(),
                  style("s").bold(),

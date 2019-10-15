@@ -1,5 +1,5 @@
-use crate::todo::Todo;
 use crate::db::Database;
+use crate::todo::Todo;
 
 use std::io;
 

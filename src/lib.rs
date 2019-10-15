@@ -2,8 +2,8 @@ use std::error::Error;
 pub mod clock;
 pub mod controls;
 pub mod date;
-pub mod todo;
 pub mod db;
+pub mod todo;
 
 const POMO_DEFAULT_TIME: i32 = 25;
 
@@ -14,7 +14,9 @@ impl App {
         match (input.stage.as_ref(), input.cmd.as_ref()) {
             ("todo", "today") => todo::Todo::new(&date::Date::today()),
             ("todo", title) => todo::Todo::new(title),
-            ("clock", "today") => clock::countdown(POMO_DEFAULT_TIME, &date::Date::today()).unwrap(),
+            ("clock", "today") => {
+                clock::countdown(POMO_DEFAULT_TIME, &date::Date::today()).unwrap()
+            }
             (&_, &_) => (),
         }
 

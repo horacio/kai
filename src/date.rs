@@ -15,8 +15,8 @@ impl Date {
 
         let output = getdate.wait_with_output().expect("failed to wait on child");
 
-        let date = String::from_utf8(output.stdout).expect("Error getting todays date");
-        let date = String::from(date.trim());
+        let mut date = String::from_utf8(output.stdout).expect("Error getting todays date");
+        date = String::from(date.trim());
 
         date
     }

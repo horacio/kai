@@ -38,7 +38,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
         style("sesh").yellow().bold(),
         style("clock").yellow().dim()
     );
-    
+
     println!(
         "{}",
         style("++-----------------------------------------------------++")
@@ -52,7 +52,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
         "Type the {} key to check of a task from the todo,",
         style("c").bold()
     );
-    
+
     println!("Type the {} key to cancel and quit", style("q").bold());
 
     println!(
@@ -63,6 +63,6 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
     );
 
     Ctrl::ctrl_pomo(todo);
-    
+
     Ok(())
 }
