@@ -1,4 +1,6 @@
 use crate::todo::Todo;
+use crate::db::Database;
+
 use std::io;
 
 use console::style;
@@ -33,7 +35,7 @@ impl Ctrl {
                     break;
                 }
                 "s\n" | "S\n" | "\n" => {
-                    todo.create_todo_file();
+                    Database::store(&todo).unwrap();
                     break;
                 }
                 _ => {
@@ -45,5 +47,5 @@ impl Ctrl {
         }
     }
 
-    pub fn ctrl_pomo(todo: &str) {}
+    pub fn ctrl_pomo(_todo: &str) {}
 }
