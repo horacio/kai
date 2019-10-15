@@ -22,7 +22,7 @@ impl Database {
 
 // Save json file to disk
 fn save_to_disk(filename: &str, json_string: &str) {
-    let path = format!("db/{}.json", filename);
+    let path = format!(".db/{}.json", filename);
     let path = Path::new(&path);
     let display = path.display();
 
