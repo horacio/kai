@@ -34,7 +34,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
     term.clear_screen().unwrap();
     println!(
         "\n[{} {}] stopped",
-        style("IWAH").yellow().bold(),
+        style("sesh").yellow().bold(),
         style("clock").yellow().dim()
     );
     println!(

@@ -31,7 +31,7 @@ impl<'a> Todo<'a> {
         term.clear_screen().unwrap();
         println!(
             "[{} {}] new",
-            style("IWAH").yellow().bold(),
+            style("sesh").yellow().bold(),
             style("todo").dim().yellow()
         );
         println!(
@@ -61,7 +61,7 @@ impl<'a> Todo<'a> {
     }
 
     pub fn create_todo_file(&self) {
-        let path = format!("iwah/todo/{}.md", self.title);
+        let path = format!("sesh/todo/{}.md", self.title);
         let path = Path::new(&path);
         let display = path.display();
         let mut todo_output = format!("# Todo {}", self.title);
