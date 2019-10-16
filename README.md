@@ -2,19 +2,20 @@
 
 Pomodoro cli/client
 
+`sesh` is a simple time management, command line tool. It is based on 
+the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+
 ## Features 
 
-|       | desc                                                | cmd                         |
-|-------|-----------------------------------------------------|-----------------------------|
-| clock | pomodoro/countdown timer                            | `sesh clock 25`             |
-| todo  | collection of tasks/pomodoros (in todo list format) | `sesh todo "Fix login bug"` |
-| log   | track your work habbits                             | `sesh log`                  |
+| Feature        | Description                                           | Command                     |
+|----------------|-------------------------------------------------------|-----------------------------|
+| - [ ] clock    | pomodoro/countdown timer                              | `sesh clock 25`             |
+| - [X] todo     | collection of tasks/pomodoros (in todo list format)   | `sesh todo "Fix login bug"` |
+| - [ ] log      | track your work habbits                               | `sesh log`                  |
+| - [X] json     | all the data is stored locally in `json` format       | automatic                   |
+| - [ ] markdown | sesh can export pomodoro session to `markdown` format | `sesh export today`         |
 
 ### Usage
-
-If you are familiar with the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
-technique then `sesh` will fit like a glove, but `sesh` is very simple even if you don't know about the Pomodoro, it is
-a simple way to manage and track your time.
 
 ---
 #### todo
