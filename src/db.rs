@@ -1,3 +1,4 @@
+use dirs;
 use serde_json::Result;
 use std::error::Error;
 use std::fs::File;
@@ -22,7 +23,8 @@ impl Database {
 
 // Save json file to disk
 fn save_to_disk(filename: &str, json_string: &str) {
-    let path = format!(".db/{}.json", filename);
+    let home = dirs::home_dir().unwrap();
+    let path = format!("{}/.sesh/{}.json", home.display(), filename);
     let path = Path::new(&path);
     let display = path.display();
 

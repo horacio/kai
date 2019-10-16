@@ -1,3 +1,4 @@
+extern crate dirs;
 use std::error::Error;
 pub mod clock;
 pub mod controls;
