@@ -7,13 +7,13 @@ the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
 ## Features 
 
-| Feature        | Description                                           | Command                     |
-|----------------|-------------------------------------------------------|-----------------------------|
-| - [ ] clock    | pomodoro/countdown timer                              | `sesh clock 25`             |
-| - [X] todo     | collection of tasks/pomodoros (in todo list format)   | `sesh todo "Fix login bug"` |
-| - [ ] log      | track your work habbits                               | `sesh log`                  |
-| - [X] json     | all the data is stored locally in `json` format       | automatic                   |
-| - [ ] markdown | sesh can export pomodoro session to `markdown` format | `sesh export today`         |
+| Feature          | Description                                           | Command                     |
+|------------------|-------------------------------------------------------|-----------------------------|
+| - [ ] `clock`    | pomodoro/countdown timer                              | `sesh clock 25`             |
+| - [X] `todo`     | collection of tasks/pomodoros (in todo list format)   | `sesh todo "Fix login bug"` |
+| - [ ] `log`      | Analyse and track your work habbits                   | `sesh log`                  |
+| - [X] `json`     | all the data is stored locally in `json` format       | automatic                   |
+| - [ ] `markdown` | sesh can export pomodoro session to `markdown` format | `sesh export today`         |
 
 ### Usage
 
