@@ -1,8 +1,7 @@
 extern crate dirs;
 
 use std::error::Error;
-use std::path::Path;
-use std::fs::{self, DirEntry};
+use std::fs;
 
 pub mod clock;
 pub mod controls;
@@ -11,7 +10,7 @@ pub mod db;
 pub mod todo;
 pub mod errors;
 
-const POMO_DEFAULT_TIME: i32 = 25;
+const POMO_DEFAULT_TIME: u64 = 1500; // 1500 seconds = 25 minutes
 
 pub struct App {}
 
