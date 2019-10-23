@@ -6,7 +6,7 @@ use console::Term;
 
 use crate::controls::Ctrl;
 
-pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
+pub fn countdown(count_from: u64, todo: &str) -> Result<(), ()> {
     let term = Term::stdout();
 
     let handle = thread::spawn(move || {
@@ -20,7 +20,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
                 "{}",
                 style(format!("{} min remaining...", i)).blue().italic()
             );
-            thread::sleep(Duration::from_millis(60));
+            thread::sleep(Duration::from_secs(1));
         }
         println!("{}", style("[COUNTDOWN ENDED]").green().dim());
         println!("{}", style("++---------------++").yellow().bold());
@@ -46,7 +46,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
             .bold()
     );
 
-    println!("Type the {} key to save repeat session,", style("r").bold());
+    println!("Type the {} key to save the pomodoro session,", style("s").bold());
 
     println!(
         "Type the {} key to check of a task from the todo,",
@@ -62,7 +62,7 @@ pub fn countdown(count_from: i32, todo: &str) -> Result<(), ()> {
             .bold()
     );
 
-    Ctrl::ctrl_pomo(todo);
+    Ctrl::ctrl_pomo(todo, count_from);
 
     Ok(())
 }
