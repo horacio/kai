@@ -46,7 +46,10 @@ pub fn countdown(count_from: u64, todo: &str) -> Result<(), ()> {
             .bold()
     );
 
-    println!("Type the {} key to save the pomodoro session,", style("s").bold());
+    println!(
+        "Type the {} key to save the pomodoro session,",
+        style("s").bold()
+    );
 
     println!(
         "Type the {} key to check of a task from the todo,",

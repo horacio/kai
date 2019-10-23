@@ -38,11 +38,11 @@ impl Ctrl {
                     Database::store(&todo).unwrap();
                     break;
                 }
-                _ => { 
-                   todo.tasks.push(user_input.trim().to_string());
+                _ => {
+                    todo.tasks.push(user_input.trim().to_string());
                 }
             }
-            
+
             user_input = String::new();
         }
     }
