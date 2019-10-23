@@ -1,13 +1,14 @@
 use dirs;
-use serde_json::Result;
+use serde_json::{Result, Value};
 use std::error::Error;
-use std::fs::File;
+use std::fs::{self, File};
 use std::io::prelude::*;
 use std::path::Path;
 
 use console::style;
 
-use crate::todo::Todo;
+use crate::date;
+use crate::todo::{Todo, Pomodoro};
 
 pub struct Database {}
 
@@ -17,6 +18,30 @@ impl Database {
     pub fn store(todo: &Todo) -> Result<()> {
         let json_string = serde_json::to_string(&todo)?;
         save_to_disk(todo.title, &json_string);
+        Ok(())
+    }
+
+    pub fn save_pomo(todo_name: &str, duration: u64) -> Result<()>{
+        let home = dirs::home_dir().unwrap();
+        let date = date::Date::today();
+        
+        let contents = fs::read_to_string(format!("{}/.sesh/{}.json", home.display(), todo_name))
+        .expect("Something went wrong reading Todo  file");
+        
+        let mut todo: Todo = serde_json::from_str(contents.as_str()).expect("Todo is not a valid json value");
+
+        todo.pomodoros.push(
+            Pomodoro{
+                date: String::from(&date.to_string()),
+                duration,
+            }
+        );
+
+        todo.total_time_spend = todo.total_time_spend + duration;
+        
+        let json_string = serde_json::to_string(&todo)?;
+
+        save_to_disk(todo_name, &json_string);
         Ok(())
     }
 }
