@@ -38,14 +38,31 @@ impl Ctrl {
                     Database::store(&todo).unwrap();
                     break;
                 }
-                _ => {
-                    todo.tasks.push(user_input.trim().to_string());
+                _ => { 
+                   todo.tasks.push(user_input.trim().to_string());
                 }
+            }
+            
+            user_input = String::new();
+        }
+    }
+
+    pub fn ctrl_pomo(todo: &str, duration: u64) {
+        let mut user_input = String::new();
+        loop {
+            io::stdin()
+                .read_line(&mut user_input)
+                .expect("Failed to read line");
+
+            match user_input.as_ref() {
+                "s\n" | "S\n" => {
+                    Database::save_pomo(todo, duration);
+                    break;
+                }
+                _ => {}
             }
 
             user_input = String::new();
         }
     }
-
-    pub fn ctrl_pomo(_todo: &str) {}
 }
