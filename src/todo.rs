@@ -6,11 +6,20 @@ use console::Term;
 use crate::controls;
 use crate::date;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Pomodoro {
+    pub date: String,
+    pub duration: u64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Todo<'a> {
     pub title: &'a str,
-    pub date: &'a str,
+    pub date_started: &'a str,
+    pub date_ended: &'a str,
     pub tasks: Vec<String>,
+    pub pomodoros: Vec<Pomodoro>,
+    pub total_time_spend: u64,
 }
 
 impl<'a> Todo<'a> {
@@ -19,8 +28,11 @@ impl<'a> Todo<'a> {
 
         let todo = Todo {
             title,
-            date: &date.to_string(),
+            date_started: &date.to_string(),
+            date_ended: "Ongoing",
             tasks: Vec::new(),
+            pomodoros: Vec::new(),
+            total_time_spend: 0,
         };
 
         let term = Term::stdout();
