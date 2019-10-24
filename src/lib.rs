@@ -10,7 +10,7 @@ pub mod db;
 pub mod errors;
 pub mod todo;
 
-const POMO_DEFAULT_TIME: u64 = 1500; // 1500 seconds = 25 minutes
+const POMO_DEFAULT_TIME: u64 = 2; // 1500 seconds = 25 minutes
 
 pub struct App {}
 
@@ -24,6 +24,13 @@ impl App {
                     println!("{}", e);
                 } else {
                     clock::countdown(POMO_DEFAULT_TIME, &date::Date::today()).unwrap();
+                }
+            }
+            ("clock", title) => {
+                if let Err(e) = detect_todo(title) {
+                    println!("{}", e);
+                } else {
+                    clock::countdown(POMO_DEFAULT_TIME, title).unwrap();
                 }
             }
             (&_, &_) => (),
