@@ -2,17 +2,17 @@
 
 Pomodoro cli/client
 
-`pomocli` is a simple command line tool insipired by the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+`pomocli` is a simple command line tool inspired by the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
 ## Features 
 
-| Feature    | Description                                               | Command                        |
-|------------|-----------------------------------------------------------|--------------------------------|
-| `clock`    | pomodoro/countdown timer                                  | `pomocli clock 25`             |
-| `todo`     | collection of tasks/pomodoros (in todo list format)       | `pomocli todo "Fix login bug"` |
-| `log`      | Analyse and track your work habbits                       | `pomocli log`                  |
-| `json`     | all the data is stored locally in `json` format           | automatic                      |
-| `markdown` | pomocli can export pomodoro sessions to `markdown` format | `pomocli log today > today.md` |
+| Feature    | Description                                                                           | Command                        |
+|------------|---------------------------------------------------------------------------------------|--------------------------------|
+| `clock`    | countdown timer (defaults to 25 minutes)                                              | `pomocli clock 25`             |
+| `todo`     | collection of tasks (in todo list format)                                             | `pomocli todo "Fix login bug"` |
+| `log`      | Analyse and track your work habbits                                                   | `pomocli log`                  |
+| `json`     | all the data is stored locally in `json` format in the home directory (`~/.pomocli/`) | automatic                      |
+| `markdown` | pomocli uses markdown syntax to log pomodoro sessions                                 | `pomocli log today > today.md` |
 
 ### Usage
 
