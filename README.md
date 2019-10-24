@@ -7,13 +7,13 @@ the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
 ## Features 
 
-| Feature    | Description                                           | Command                     |
-|------------|-------------------------------------------------------|-----------------------------|
-| `clock`    | pomodoro/countdown timer                              | `pomocli clock 25`             |
-| `todo`     | collection of tasks/pomodoros (in todo list format)   | `pomocli todo "Fix login bug"` |
-| `log`      | Analyse and track your work habbits                   | `pomocli log`                  |
-| `json`     | all the data is stored locally in `json` format       | automatic                   |
-| `markdown` | pomocli can export pomodoro session to `markdown` format | `pomocli export today`         |
+| Feature    | Description                                               | Command                        |
+|------------|-----------------------------------------------------------|--------------------------------|
+| `clock`    | pomodoro/countdown timer                                  | `pomocli clock 25`             |
+| `todo`     | collection of tasks/pomodoros (in todo list format)       | `pomocli todo "Fix login bug"` |
+| `log`      | Analyse and track your work habbits                       | `pomocli log`                  |
+| `json`     | all the data is stored locally in `json` format           | automatic                      |
+| `markdown` | pomocli can export pomodoro sessions to `markdown` format | `pomocli log today > today.md` |
 
 ### Usage
 
@@ -47,3 +47,33 @@ pomocli clock -m 40 "today"
 pomocli clock -m 60 "Fix frontend"
 ```
 ___
+
+#### log
+
+```bash
+# log today's session
+pomocli log today
+```
+
+```bash
+# log a session by name
+pomocli log "Fix frontend"
+```
+
+```bash
+# export to markdown
+pomocli log "Fix frontend" > ./front_end_work_log.md
+
+# writes the todo to ./front_end_work_log.md
+
+# # 2019-10-24
+
+# 1. [ ] Ui
+# 2. [X] CSS Bugs
+
+# ------------------------
+# Pomodoros: 0
+# Date Started: 2019-10-24
+# Date Ended: Ongoing
+# Total Time Spend: 0min
+```
