@@ -3,7 +3,7 @@ use serde_json::{Result, Value};
 use std::error::Error;
 use std::fs::{self, File};
 use std::io::prelude::*;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use console::style;
 
@@ -12,7 +12,7 @@ use crate::todo::{Pomodoro, Todo};
 
 pub struct Database {}
 
-// Handles JSON disk storage and querying
+// Handlesx JSON disk storage and querying
 impl Database {
     // generate json and store to disk
     pub fn store(todo: &Todo) -> Result<()> {
@@ -42,6 +42,15 @@ impl Database {
 
         save_to_disk(todo_name, &json_string);
         Ok(())
+    }
+
+    pub fn get_todo(todo_name: &str) -> String {
+        let home = dirs::home_dir().unwrap();
+
+        let contents = fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
+            .expect("Something went wrong reading Todo  file");
+
+        contents       
     }
 }
 
