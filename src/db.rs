@@ -25,7 +25,7 @@ impl Database {
         let home = dirs::home_dir().unwrap();
         let date = date::Date::today();
 
-        let contents = fs::read_to_string(format!("{}/.sesh/{}.json", home.display(), todo_name))
+        let contents = fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
             .expect("Something went wrong reading Todo  file");
 
         let mut todo: Todo =
@@ -48,7 +48,7 @@ impl Database {
 // Save json file to disk
 fn save_to_disk(filename: &str, json_string: &str) {
     let home = dirs::home_dir().unwrap();
-    let path = format!("{}/.sesh/{}.json", home.display(), filename);
+    let path = format!("{}/.pomocli/{}.json", home.display(), filename);
     let path = Path::new(&path);
     let display = path.display();
 

@@ -1,19 +1,19 @@
-# sesh
+# pomocli
 
 Pomodoro cli/client
 
-`sesh` is a simple time management, command line tool. It is based on 
+`pomocli` is a simple time management, command line tool. It is based on 
 the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
 ## Features 
 
 | Feature    | Description                                           | Command                     |
 |------------|-------------------------------------------------------|-----------------------------|
-| `clock`    | pomodoro/countdown timer                              | `sesh clock 25`             |
-| `todo`     | collection of tasks/pomodoros (in todo list format)   | `sesh todo "Fix login bug"` |
-| `log`      | Analyse and track your work habbits                   | `sesh log`                  |
+| `clock`    | pomodoro/countdown timer                              | `pomocli clock 25`             |
+| `todo`     | collection of tasks/pomodoros (in todo list format)   | `pomocli todo "Fix login bug"` |
+| `log`      | Analyse and track your work habbits                   | `pomocli log`                  |
 | `json`     | all the data is stored locally in `json` format       | automatic                   |
-| `markdown` | sesh can export pomodoro session to `markdown` format | `sesh export today`         |
+| `markdown` | pomocli can export pomodoro session to `markdown` format | `pomocli export today`         |
 
 ### Usage
 
@@ -22,28 +22,28 @@ the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
 ```bash
 # create a new todo list and save it with todays date:
-sesh todo today 
+pomocli todo today 
 ```
 
 ```bash
 # create a new todo list and save it with a custom name:
-sesh todo "Front-end stuff"
+pomocli todo "Front-end stuff"
 ```
 ---
 #### clock
 
 ```bash
 # work on today's session for 25min
-sesh clock "today"
+pomocli clock "today"
 ```
 
 ```bash
 # work on today's session for 40min
-sesh clock -m 40 "today"
+pomocli clock -m 40 "today"
 ```
 
 ```bash
 # work on "Fix frontend" session for 60min
-sesh clock -m 60 "Fix frontend"
+pomocli clock -m 60 "Fix frontend"
 ```
 ___

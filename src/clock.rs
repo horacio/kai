@@ -35,7 +35,7 @@ pub fn countdown(count_from: u64, todo: &str) -> Result<(), ()> {
 
     println!(
         "\n[{} {}] stopped",
-        style("sesh").yellow().bold(),
+        style("pomocli").yellow().bold(),
         style("clock").yellow().dim()
     );
 

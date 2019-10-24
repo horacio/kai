@@ -40,7 +40,7 @@ impl<'a> Todo<'a> {
         term.clear_screen().unwrap();
         println!(
             "[{} {}] new",
-            style("sesh").yellow().bold(),
+            style("pomocli").yellow().bold(),
             style("todo").dim().yellow()
         );
 

@@ -35,8 +35,8 @@ impl App {
 
 // check if todo file exists
 fn detect_todo(filename: &str) -> Result<(), Box<dyn Error>> {
-    let sesh_store = format!("{}/.sesh", dirs::home_dir().unwrap().display());
-    let entries = fs::read_dir(sesh_store).unwrap();
+    let pomocli_store = format!("{}/.pomocli", dirs::home_dir().unwrap().display());
+    let entries = fs::read_dir(pomocli_store).unwrap();
     let file = format!("{}.json", filename);
 
     for entry in entries {
