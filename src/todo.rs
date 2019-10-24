@@ -13,11 +13,17 @@ pub struct Pomodoro {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub struct Task {
+    pub title: String,
+    pub checked: bool,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Todo<'a> {
     pub title: &'a str,
     pub date_started: &'a str,
     pub date_ended: &'a str,
-    pub tasks: Vec<String>,
+    pub tasks: Vec<Task>,
     pub pomodoros: Vec<Pomodoro>,
     pub total_time_spend: u64,
 }
