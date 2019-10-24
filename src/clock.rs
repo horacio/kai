@@ -6,7 +6,7 @@ use console::Term;
 
 use crate::controls::Ctrl;
 
-pub fn countdown(count_from: u64, todo: &str) -> Result<(), ()> {
+pub fn countdown(count_from: u64, todo_name: &str) -> Result<(), ()> {
     let term = Term::stdout();
 
     let handle = thread::spawn(move || {
@@ -65,7 +65,7 @@ pub fn countdown(count_from: u64, todo: &str) -> Result<(), ()> {
             .bold()
     );
 
-    Ctrl::ctrl_pomo(todo, count_from);
+    Ctrl::ctrl_pomo(todo_name, count_from);
 
     Ok(())
 }
