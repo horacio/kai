@@ -2,8 +2,7 @@
 
 Pomodoro cli/client
 
-`pomocli` is a simple time management, command line tool. It is based on 
-the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+`pomocli` is a simple command line tool insipired by the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
 ## Features 
 
@@ -34,12 +33,12 @@ pomocli todo "Front-end stuff"
 
 ```bash
 # work on today's session for 25min
-pomocli clock "today"
+pomocli clock today
 ```
 
 ```bash
 # work on today's session for 40min
-pomocli clock -m 40 "today"
+pomocli clock -m 40 today
 ```
 
 ```bash
@@ -53,18 +52,6 @@ ___
 ```bash
 # log today's session
 pomocli log today
-```
-
-```bash
-# log a session by name
-pomocli log "Fix frontend"
-```
-
-```bash
-# export to markdown
-pomocli log "Fix frontend" > ./front_end_work_log.md
-
-# writes the todo to ./front_end_work_log.md
 
 # # 2019-10-24
 
@@ -75,5 +62,15 @@ pomocli log "Fix frontend" > ./front_end_work_log.md
 # Pomodoros: 0
 # Date Started: 2019-10-24
 # Date Ended: Ongoing
-# Total Time Spend: 0min
+# Total Time Spend: 25min
+```
+
+```bash
+# log a session by name
+pomocli log "Fix frontend"
+```
+
+```bash
+# export to markdown
+pomocli log "Fix frontend" > ./front_end_work_log.md
 ```
