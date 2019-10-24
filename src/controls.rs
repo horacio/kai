@@ -1,5 +1,5 @@
 use crate::db::Database;
-use crate::todo::{Todo, Task};
+use crate::todo::{Task, Todo};
 
 use std::io;
 
@@ -39,7 +39,10 @@ impl Ctrl {
                     break;
                 }
                 _ => {
-                    todo.tasks.push(Task{title: user_input.trim().to_string(), checked: false});
+                    todo.tasks.push(Task {
+                        title: user_input.trim().to_string(),
+                        checked: false,
+                    });
                 }
             }
 

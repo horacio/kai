@@ -25,8 +25,9 @@ impl Database {
         let home = dirs::home_dir().unwrap();
         let date = date::Date::today();
 
-        let contents = fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
-            .expect("Something went wrong reading Todo  file");
+        let contents =
+            fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
+                .expect("Something went wrong reading Todo  file");
 
         let mut todo: Todo =
             serde_json::from_str(contents.as_str()).expect("Todo is not a valid json value");
@@ -47,10 +48,11 @@ impl Database {
     pub fn get_todo(todo_name: &str) -> String {
         let home = dirs::home_dir().unwrap();
 
-        let contents = fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
-            .expect("Something went wrong reading Todo  file");
+        let contents =
+            fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
+                .expect("Something went wrong reading Todo  file");
 
-        contents       
+        contents
     }
 }
 

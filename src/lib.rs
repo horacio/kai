@@ -8,8 +8,8 @@ pub mod controls;
 pub mod date;
 pub mod db;
 pub mod errors;
-pub mod todo;
 pub mod log;
+pub mod todo;
 
 const POMO_DEFAULT_TIME: u64 = 2; // 1500 seconds = 25 minutes
 

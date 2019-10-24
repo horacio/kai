@@ -4,18 +4,16 @@ use crate::todo::Todo;
 pub fn basic(todo_name: &str) {
     let json_string = Database::get_todo(todo_name);
 
-    let todo: Todo =     
+    let todo: Todo =
         serde_json::from_str(json_string.as_ref()).expect("Todo is not a valid json value");
 
     println!("{}", gen_markdown(todo));
-
 }
 
-
-pub fn gen_markdown(todo: Todo) -> String{
+pub fn gen_markdown(todo: Todo) -> String {
     let mut count = 1;
     let mut output = format!("# {}\n\n", todo.title);
-    
+
     for task in todo.tasks {
         if task.checked {
             output = format!("{}{}. [X] {}\n", output, count, task.title);
