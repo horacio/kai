@@ -1,11 +1,9 @@
 use dirs;
-use serde_json::{Result, Value};
+use serde_json::{Result};
 use std::error::Error;
 use std::fs::{self, File};
 use std::io::prelude::*;
-use std::path::{Path, PathBuf};
-
-use console::style;
+use std::path::{Path};
 
 use crate::date;
 use crate::todo::{Pomodoro, Todo};
@@ -27,7 +25,7 @@ impl Database {
 
         let contents =
             fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
-                .expect("Something went wrong reading Todo  file");
+            .expect("Something went wrong reading Todo  file");
 
         let mut todo: Todo =
             serde_json::from_str(contents.as_str()).expect("Todo is not a valid json value");
@@ -50,7 +48,7 @@ impl Database {
 
         let contents =
             fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
-                .expect("Something went wrong reading Todo  file");
+            .expect("Something went wrong reading Todo  file");
 
         contents
     }
@@ -70,9 +68,6 @@ fn save_to_disk(filename: &str, json_string: &str) {
 
     match file.write_all(json_string.as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
-        Ok(_) => println!(
-            "{}",
-            style(format!("\n successfully wrote to {}\n", display)).green()
-        ),
+        Ok(_) => println!("\nSaved Todo [{}]\n", display)
     }
 }

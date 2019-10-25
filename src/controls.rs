@@ -3,8 +3,6 @@ use crate::todo::{Task, Todo};
 
 use std::io;
 
-use console::style;
-
 pub struct Ctrl {
     pub stage: String,
     pub cmd: String,
@@ -31,7 +29,7 @@ impl Ctrl {
 
             match user_input.as_ref() {
                 "q\n" | "Q\n" => {
-                    println!("{}", style("Quit").red());
+                    println!("Quit");
                     break;
                 }
                 "s\n" | "S\n" | "\n" => {

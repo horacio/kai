@@ -1,8 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-use console::style;
-use console::Term;
-
 use crate::controls;
 use crate::date;
 
@@ -41,39 +38,14 @@ impl<'a> Todo<'a> {
             total_time_spend: 0,
         };
 
-        let term = Term::stdout();
+        println!("[TODO]");
+        println!("+-------------------------------------------------+");
+        println!(" Type task and <enter> to add it to the todo list");
+        println!(" Type <s> to save the todo list");
+        println!(" Type <q> to cancel and quit");
+        println!("+-------------------------------------------------+");
+        println!("Enter tasks for [{}]: ",title.to_string());
 
-        term.clear_screen().unwrap();
-        println!(
-            "[{} {}] new",
-            style("pomocli").yellow().bold(),
-            style("todo").dim().yellow()
-        );
-
-        println!(
-            "{}",
-            style("++-----------------------------------------------------++")
-                .yellow()
-                .bold()
-        );
-
-        println!("Type task and click on the {} key to input a task,\nType the {} key to save all inputed tasks,\nType the {} key to cancel and quit",
-                 style("enter").bold(),
-                 style("s").bold(),
-                 style("q").bold()
-        );
-
-        println!(
-            "{}",
-            style("++-----------------------------------------------------++")
-                .yellow()
-                .bold()
-        );
-
-        println!(
-            "\n Enter tasks for session ({}): ",
-            style(title.to_string()).bold()
-        );
         controls::Ctrl::ctrl_todo(todo);
     }
 }
