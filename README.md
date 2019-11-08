@@ -57,12 +57,14 @@ pomocli log all
 # - Pomodoros: 0
 # - Date Started: 2019-11-08
 # - Date Ended: Ongoing
+# - Total Time Spend: 0
 
 # #2019-10-25
 # - Tasks: 3
 # - Pomodoros: 0
 # - Date Started: 2019-10-25
 # - Date Ended: Ongoing
+# - Total Time Spend: 0
 
 ```
 

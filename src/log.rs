@@ -45,12 +45,13 @@ pub fn gen_markdown(todo: Todo) -> String {
 
 pub fn log_all(todo: Todo) -> String {
     let output = format!(
-        "#{}\n- Tasks: {}\n- Pomodoros: {}\n- Date Started: {}\n- Date Ended: {}\n",
+        "#{}\n- Tasks: {}\n- Pomodoros: {}\n- Date Started: {}\n- Date Ended: {}\n- Total Time Spend: {}\n",
         todo.title,
         todo.tasks.len(),
         todo.pomodoros.len(),
         todo.date_started,
-        todo.date_ended
+        todo.date_ended,
+        todo.total_time_spend
     );
 
     output
