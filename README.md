@@ -48,7 +48,7 @@ pomocli clock -m 60 "Fix frontend"
 ___
 
 #### log
-```
+```bash
 # log all (Todos)
 pomocli log all
 
