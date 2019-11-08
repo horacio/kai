@@ -1,6 +1,15 @@
 use crate::db::Database;
 use crate::todo::Todo;
 
+pub fn all() {
+    for entry in Database::get_all() {
+        let todo: Todo =
+            serde_json::from_str(entry.as_ref()).expect("Todo is not a valid json value");
+
+        println!("{}", log_all(todo));
+    }
+}
+
 pub fn basic(todo_name: &str) {
     let json_string = Database::get_todo(todo_name);
 
@@ -12,8 +21,9 @@ pub fn basic(todo_name: &str) {
 
 pub fn gen_markdown(todo: Todo) -> String {
     let mut count = 1;
-    let mut output = format!("# {}\n\n", todo.title);
+    let mut output = format!("\n# {}\n\n", todo.title);
 
+    output = format!("{}## Tasks: \n", output);
     for task in todo.tasks {
         if task.checked {
             output = format!("{}{}. [X] {}\n", output, count, task.title);
@@ -29,6 +39,19 @@ pub fn gen_markdown(todo: Todo) -> String {
     output = format!("{}Date Started: {}\n", output, todo.date_started);
     output = format!("{}Date Ended: {}\n", output, todo.date_ended);
     output = format!("{}Total Time Spend: {}min\n", output, todo.total_time_spend);
+
+    output
+}
+
+pub fn log_all(todo: Todo) -> String {
+    let output = format!(
+        "#{}\n- Tasks: {}\n- Pomodoros: {}\n- Date Started: {}\n- Date Ended: {}\n",
+        todo.title,
+        todo.tasks.len(),
+        todo.pomodoros.len(),
+        todo.date_started,
+        todo.date_ended
+    );
 
     output
 }

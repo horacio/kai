@@ -44,7 +44,7 @@ impl<'a> Todo<'a> {
         println!(" Type <s> to save the todo list");
         println!(" Type <q> to cancel and quit");
         println!("+-------------------------------------------------+");
-        println!("Enter tasks for [{}]: ",title.to_string());
+        println!("Enter tasks for [{}]: ", title.to_string());
 
         controls::Ctrl::ctrl_todo(todo);
     }

@@ -48,9 +48,26 @@ pomocli clock -m 60 "Fix frontend"
 ___
 
 #### log
+```
+# log all (Todos)
+pomocli log all
+
+# #2019-11-08
+# - Tasks: 3
+# - Pomodoros: 0
+# - Date Started: 2019-11-08
+# - Date Ended: Ongoing
+
+# #2019-10-25
+# - Tasks: 3
+# - Pomodoros: 0
+# - Date Started: 2019-10-25
+# - Date Ended: Ongoing
+
+```
 
 ```bash
-# log today's session
+# log today's Todo
 pomocli log today
 
 # # 2019-10-24

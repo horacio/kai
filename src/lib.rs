@@ -34,6 +34,9 @@ impl App {
                     clock::countdown(POMO_DEFAULT_TIME, title).unwrap();
                 }
             }
+            ("log", "all") => {
+                log::all();
+            }
             ("log", "today") => {
                 if let Err(e) = detect_todo(&date::Date::today()) {
                     println!("{}", e);
