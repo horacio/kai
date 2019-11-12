@@ -10,7 +10,7 @@ use crate::todo::{Pomodoro, Todo};
 
 pub struct Database {}
 
-// Handlesx JSON disk storage and querying
+// Handles JSON disk storage and querying
 impl Database {
     // generate json and store to disk
     pub fn store(todo: &Todo) -> Result<()> {
@@ -68,6 +68,18 @@ impl Database {
 
         todos
     }
+
+    pub fn check_task(mut todo: Todo, task_number: usize) -> Result<()>{
+        if todo.tasks[task_number].checked {
+            todo.tasks[task_number].checked = false;
+        } else {
+            todo.tasks[task_number].checked = true;
+        }
+
+        let json_string = serde_json::to_string(&todo).unwrap();
+        save_to_disk(todo.title, &json_string);
+        Ok(())
+    }
 }
 
 // Save json file to disk
@@ -84,6 +96,6 @@ fn save_to_disk(filename: &str, json_string: &str) {
 
     match file.write_all(json_string.as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why.description()),
-        Ok(_) => println!("\nSaved Todo [{}]\n", display),
+        Ok(_) => println!("\nSaved Todo [{}]", display),
     }
 }

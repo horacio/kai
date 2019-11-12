@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::controls;
+use crate::controls::{Ctrl, ctrl_todo};
 use crate::date;
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -46,6 +46,6 @@ impl<'a> Todo<'a> {
         println!("+-------------------------------------------------+");
         println!("Enter tasks for [{}]: ", title.to_string());
 
-        controls::Ctrl::ctrl_todo(todo);
+        ctrl_todo(todo);
     }
 }

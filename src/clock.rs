@@ -1,5 +1,4 @@
-use crate::controls::Ctrl;
-use notify_rust::Notification;
+use crate::controls::{Ctrl, ctrl_pomo};
 use std::thread;
 use std::time::Duration;
 
@@ -14,13 +13,6 @@ pub fn countdown(count_from: u64, todo_name: &str) -> Result<(), ()> {
 
     handle.join().unwrap();
 
-    Notification::new()
-        .summary("Firefox News")
-        .body("This will almost look like a real firefox notification.")
-        .icon("firefox")
-        .show()
-        .unwrap();
-
     println!("\n[CLOCK ended]");
     println!("+--------------------------------------------------------+");
     println!(" Type <s> to save the pomodoro session");
@@ -28,7 +20,7 @@ pub fn countdown(count_from: u64, todo_name: &str) -> Result<(), ()> {
     println!(" Type <q> key to cancel and quit");
     println!("+--------------------------------------------------------+");
 
-    Ctrl::ctrl_pomo(todo_name, count_from);
+    ctrl_pomo(todo_name, count_from);
 
     Ok(())
 }
