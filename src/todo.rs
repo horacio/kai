@@ -1,6 +1,9 @@
+use console::style;
+use console::Term;
+
 use serde::{Deserialize, Serialize};
 
-use crate::controls::{Ctrl, ctrl_todo};
+use crate::controls::{ctrl_todo, Ctrl};
 use crate::date;
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -27,6 +30,7 @@ pub struct Todo<'a> {
 
 impl<'a> Todo<'a> {
     pub fn new(title: &'a str) {
+        let term = Term::stdout();
         let date = date::Date::today();
 
         let todo = Todo {
@@ -38,13 +42,26 @@ impl<'a> Todo<'a> {
             total_time_spend: 0,
         };
 
-        println!("[TODO]");
-        println!("+-------------------------------------------------+");
-        println!(" Type task and <enter> to add it to the todo list");
-        println!(" Type <s> to save the todo list");
-        println!(" Type <q> to cancel and quit");
-        println!("+-------------------------------------------------+");
-        println!("Enter tasks for [{}]: ", title.to_string());
+        term.clear_screen();
+        println!("{}", style("[TODO]").blue().dim());
+        println!(
+            "{}",
+            style("+-----------------------------------------+").blue()
+        );
+        println!(
+            " Type task and <{}> to add it to the todo list",
+            style("enter").blue().bold()
+        );
+        println!(" Type <{}> to save the todo list", style("s").blue().bold());
+        println!(" Type <{}> to cancel and quit", style("q").blue().bold());
+        println!(
+            "{}",
+            style("+-----------------------------------------+").blue()
+        );
+        println!(
+            "Enter tasks for [{}]: ",
+            style(format!("{}", title.to_string())).blue()
+        );
 
         ctrl_todo(todo);
     }

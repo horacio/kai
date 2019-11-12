@@ -69,7 +69,7 @@ impl Database {
         todos
     }
 
-    pub fn check_task(mut todo: Todo, task_number: usize) -> Result<()>{
+    pub fn check_task(mut todo: Todo, task_number: usize) -> Result<()> {
         if todo.tasks[task_number].checked {
             todo.tasks[task_number].checked = false;
         } else {

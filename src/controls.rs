@@ -1,3 +1,6 @@
+use console::style;
+use console::Term;
+
 use crate::db::Database;
 use crate::todo::{Task, Todo};
 
@@ -19,7 +22,6 @@ impl Ctrl {
 
         Ok(Ctrl { stage, cmd })
     }
-
 }
 
 pub fn ctrl_todo(mut todo: Todo) {
@@ -58,7 +60,6 @@ pub fn ctrl_pomo(todo: &str, duration: u64) {
             .expect("Failed to read line");
 
         match user_input.as_ref() {
-
             // Save pomodoro session
             "s\n" => {
                 Database::save_pomo(todo, duration);
@@ -67,29 +68,36 @@ pub fn ctrl_pomo(todo: &str, duration: u64) {
 
             // Check of a task
             "c\n" => {
-                let json_string = Database::get_todo(todo);                    
-                let todo: Todo =
-                    serde_json::from_str(json_string.as_ref()).expect("Todo is not a valid json value");
+                let json_string = Database::get_todo(todo);
+                let todo: Todo = serde_json::from_str(json_string.as_ref())
+                    .expect("Todo is not a valid json value");
                 let mut count = 1;
-                
-                println!("\n[CHECK tasks]");
-                println!("+--------------------------------------------------------+");
-                println!(" Enter the task number to check/uncheck a task");                    
+                let term = Term::stdout();
+
+                term.clear_screen();
+                println!("{}", style("[CHECK tasks]").blue().dim());
+                println!(
+                    "{}",
+                    style("+--------------------------------------------------------+").blue()
+                );
+                println!(" Enter the task number to check/uncheck a task");
                 for task in &todo.tasks {
                     if task.checked {
-                        println!("  {}. [x] {}", count, task.title);
+                        println!("  {}. [x] {}", style(count).blue().bold(), task.title);
+                    } else {
+                        println!("  {}. [ ] {}", style(count).blue().bold(), task.title);
                     }
-                    else {
-                        println!("  {}. [ ] {}", count, task.title);
-                    }
-                    
+
                     count = count + 1;
-                }                    
-                println!("+--------------------------------------------------------+");
+                }
+                println!(
+                    "{}",
+                    style("+--------------------------------------------------------+").blue()
+                );
                 println!("Task number: ");
 
                 let mut task_number = String::new();
-                
+
                 io::stdin()
                     .read_line(&mut task_number)
                     .expect("Failed to read line");
@@ -97,13 +105,13 @@ pub fn ctrl_pomo(todo: &str, duration: u64) {
                 let task_number = task_number.trim();
                 let number_of_tasks = todo.tasks.len();
                 let todo_name = todo.title;
-                
+
                 match task_number.parse::<usize>() {
                     Ok(i) => {
                         if i <= 0 || i > number_of_tasks {
                             panic!("Task number {} not found", i);
                         } else {
-                            Database::check_task(todo, i-1).unwrap();
+                            Database::check_task(todo, i - 1).unwrap();
                             Database::save_pomo(todo_name, duration);
                         }
                     }
@@ -111,8 +119,8 @@ pub fn ctrl_pomo(todo: &str, duration: u64) {
                 };
                 break;
             }
-            
-            _ => break
+
+            _ => break,
         }
 
         user_input = String::new();
