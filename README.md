@@ -21,36 +21,36 @@ Pomodoro cli/client
 
 ```bash
 # create a new todo list and save it with todays date:
-pomocli todo today 
+$ pomocli todo today 
 ```
 
 ```bash
 # create a new todo list and save it with a custom name:
-pomocli todo "Front-end stuff"
+$ pomocli todo "Front-end stuff"
 ```
 ---
 #### clock
 
 ```bash
 # work on today's session for 25min
-pomocli clock today
+$ pomocli clock today
 ```
 
 ```bash
 # work on today's session for 40min
-pomocli clock -m 40 today
+$ pomocli clock -m 40 today
 ```
 
 ```bash
 # work on "Fix frontend" session for 60min
-pomocli clock -m 60 "Fix frontend"
+$ pomocli clock -m 60 "Fix frontend"
 ```
 ___
 
 #### log
 ```bash
 # log all (Todos)
-pomocli log all
+$ pomocli log all
 
 # #2019-11-08
 # - Tasks: 3
@@ -70,7 +70,7 @@ pomocli log all
 
 ```bash
 # log today's Todo
-pomocli log today
+$ pomocli log today
 
 # # 2019-10-24
 
@@ -86,12 +86,12 @@ pomocli log today
 
 ```bash
 # log a session by name
-pomocli log "Fix frontend"
+$ pomocli log "Fix frontend"
 ```
 
 ```bash
 # export to markdown
-pomocli log "Fix frontend" > ./front_end_work_log.md
+$ pomocli log "Fix frontend" > ./front_end_work_log.md
 ```
 
 
