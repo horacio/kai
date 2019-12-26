@@ -93,13 +93,3 @@ $ pomocli log "Fix frontend"
 # export to markdown
 $ pomocli log "Fix frontend" > ./front_end_work_log.md
 ```
-
-
-### TODO
-
-- [ ] Notifications
-- [ ] User friendly Loader
-- [ ] Display time in minutes
-- [ ] Display Tasks at CLOCK ended
-- [ ] Implement Back and Forward navigation
-- [ ] Export all to md
