@@ -1,7 +1,7 @@
 use std::env;
 use std::process;
 
-use pomocli::controls::Ctrl;
+use kai::controls::Ctrl;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -10,7 +10,7 @@ fn main() {
         process::exit(1);
     });
 
-    let app = pomocli::App {};
+    let app = kai::App {};
 
     if let Err(e) = app.run(cmd) {
         eprintln!("Application error {}", e);

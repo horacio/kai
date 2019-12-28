@@ -19,7 +19,13 @@ impl App {
     pub fn run(&self, input: controls::Ctrl) -> Result<(), Box<dyn Error>> {
         match (input.stage.as_ref(), input.cmd.as_ref()) {
             ("todo", "today") => todo::Todo::new(&date::Date::today()),
-            ("todo", title) => todo::Todo::new(title),
+            ("todo", title) => {
+                if title.ends_with(".md") {
+                    todo::parse();
+                } else {
+                    todo::Todo::new(title)
+                }                
+            }
             ("clock", "today") => {
                 if let Err(e) = detect_todo(&date::Date::today()) {
                     println!("{}", e);
@@ -60,8 +66,8 @@ impl App {
 
 // check if todo file exists
 fn detect_todo(filename: &str) -> Result<(), Box<dyn Error>> {
-    let pomocli_store = format!("{}/.pomocli", dirs::home_dir().unwrap().display());
-    let entries = fs::read_dir(pomocli_store).unwrap();
+    let kai_store = format!("{}/.kai", dirs::home_dir().unwrap().display());
+    let entries = fs::read_dir(kai_store).unwrap();
     let file = format!("{}.json", filename);
 
     for entry in entries {

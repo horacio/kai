@@ -24,7 +24,7 @@ impl Database {
         let date = date::Date::today();
 
         let contents =
-            fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
+            fs::read_to_string(format!("{}/.kai/{}.json", home.display(), todo_name))
                 .expect("Something went wrong reading Todo  file");
 
         let mut todo: Todo =
@@ -47,7 +47,7 @@ impl Database {
         let home = dirs::home_dir().unwrap();
 
         let contents =
-            fs::read_to_string(format!("{}/.pomocli/{}.json", home.display(), todo_name))
+            fs::read_to_string(format!("{}/.kai/{}.json", home.display(), todo_name))
                 .expect("Something went wrong reading Todo  file");
 
         contents
@@ -55,7 +55,7 @@ impl Database {
 
     pub fn get_all() -> Vec<String> {
         let home = dirs::home_dir().unwrap();
-        let path = format!("{}/.pomocli/", home.display());
+        let path = format!("{}/.kai/", home.display());
         let dir = Path::new(&path);
         let mut todos = vec![];
 
@@ -85,7 +85,7 @@ impl Database {
 // Save json file to disk
 fn save_to_disk(filename: &str, json_string: &str) {
     let home = dirs::home_dir().unwrap();
-    let path = format!("{}/.pomocli/{}.json", home.display(), filename);
+    let path = format!("{}/.kai/{}.json", home.display(), filename);
     let path = Path::new(&path);
     let display = path.display();
 

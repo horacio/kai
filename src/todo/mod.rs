@@ -1,3 +1,5 @@
+mod parser;
+
 use console::style;
 use console::Term;
 
@@ -5,6 +7,8 @@ use serde::{Deserialize, Serialize};
 
 use crate::controls::{ctrl_todo, Ctrl};
 use crate::date;
+
+pub use parser::parse;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Pomodoro {

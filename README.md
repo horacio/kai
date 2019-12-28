@@ -1,95 +1,65 @@
-# pomocli
+# kai
 
-Pomodoro cli/client
-
-`pomocli` is a simple command line tool inspired by the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+Time management system.
 
 ## Features 
 
 | Feature    | Description                                                                           | Command                        |
 |------------|---------------------------------------------------------------------------------------|--------------------------------|
-| `clock`    | countdown timer (defaults to 25 minutes)                                              | `pomocli clock 25`             |
-| `todo`     | collection of tasks (in todo list format)                                             | `pomocli todo "Fix login bug"` |
-| `log`      | Analyse and track your work habbits                                                   | `pomocli log`                  |
+| `clock`    | countdown timer (defaults to 25 minutes)                                              | `kai clock 25`             |
+| `todo`     | collection of tasks (in todo list format)                                             | `kai todo "Fix login bug"` |
+| `log`      | Analyse and track your work habbits                                                   | `kai log`                  |
 | `json`     | all the data is stored locally in `json` format in the home directory (`~/.pomocli/`) | automatic                      |
-| `markdown` | pomocli uses markdown syntax to log pomodoro sessions                                 | `pomocli log today > today.md` |
+| `markdown` | kai uses markdown syntax to log pomodoro sessions                                 | `kai log today > today.md` |
 
 ### Usage
 
 ---
 #### todo
-
+Create a new todo list and save it with todays date:
 ```bash
-# create a new todo list and save it with todays date:
-$ pomocli todo today 
+$ kai todo today
 ```
 
+Create a new todo list and save it with a custom name:
 ```bash
-# create a new todo list and save it with a custom name:
-$ pomocli todo "Front-end stuff"
+$ kai todo "Front-end stuff"
 ```
 ---
 #### clock
-
+Work on today's session for 25min (default)
 ```bash
-# work on today's session for 25min
-$ pomocli clock today
+$ kai clock today
 ```
 
+Work on today's session for 40min
 ```bash
-# work on today's session for 40min
-$ pomocli clock -m 40 today
+$ kai clock -m 40 today
 ```
 
+Work on "Fix frontend" session for 60min
 ```bash
-# work on "Fix frontend" session for 60min
-$ pomocli clock -m 60 "Fix frontend"
+$ kai clock -m 60 "Fix frontend"
 ```
 ___
 
 #### log
+Log all (Todos)
 ```bash
-# log all (Todos)
-$ pomocli log all
-
-# #2019-11-08
-# - Tasks: 3
-# - Pomodoros: 0
-# - Date Started: 2019-11-08
-# - Date Ended: Ongoing
-# - Total Time Spend: 0
-
-# #2019-10-25
-# - Tasks: 3
-# - Pomodoros: 0
-# - Date Started: 2019-10-25
-# - Date Ended: Ongoing
-# - Total Time Spend: 0
-
+$ kai log all
 ```
 
+Log today's Todo
 ```bash
-# log today's Todo
-$ pomocli log today
-
-# # 2019-10-24
-
-# 1. [ ] Ui
-# 2. [X] CSS Bugs
-
-# ------------------------
-# Pomodoros: 0
-# Date Started: 2019-10-24
-# Date Ended: Ongoing
-# Total Time Spend: 25min
+$ kai log today
 ```
 
+Log a session by name
 ```bash
-# log a session by name
-$ pomocli log "Fix frontend"
+$ kai log "Fix frontend"
 ```
 
+Export to markdown
 ```bash
-# export to markdown
-$ pomocli log "Fix frontend" > ./front_end_work_log.md
+$ kai log "Fix frontend" > ./front_end_work_log.md
 ```

@@ -1,5 +1,5 @@
 [package]
-name = "pomocli"
+name = "kai"
 version = "0.1.0"
 authors = ["cy6erlion <cy6erlion@protonmail.com>"]
 edition = "2018"
@@ -7,5 +7,6 @@ edition = "2018"
 [dependencies]
 dirs = "2.0.2"
 console = "0.9.1"
+
 serde = {version = "1.0.101", features = ["derive"]}
 serde_json = "1.0.41"
