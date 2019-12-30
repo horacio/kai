@@ -28,7 +28,7 @@ pub fn basic(todo_name: &str) {
 pub fn gen_markdown(todo: Todo) -> String {
     let mut count = 1;
     let mut output = format!(
-        "\n{} {}\n\n",
+        "{} {}\n\n",
         style("#").dim(),
         style(todo.title).blue().bold()
     );
