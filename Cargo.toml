@@ -5,6 +5,7 @@ authors = ["cy6erlion <cy6erlion@protonmail.com>"]
 edition = "2018"
 
 [dependencies]
+clap = "2.33.0"
 dirs = "2.0.2"
 console = "0.9.1"
 
