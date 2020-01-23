@@ -29,44 +29,44 @@ fn main() {
         .subcommand(SubCommand::with_name("todo")
                     .name("todo")
                     .about("Create a new todo")
-                    .arg(Arg::with_name("source")
-                         .short("s")
-                         .long("source")
+                    .arg(Arg::with_name("input")
+                         .short("i")
+                         .long("input")
                          .takes_value(true)
-                         .value_name("SOURCE")
+                         .value_name("INPUT")
                          .default_value("today")
                          .number_of_values(1)))
         .subcommand(SubCommand::with_name("clock")
                     .name("clock")
                     .about("Countdown timer (defaults to 1 KAI (25min))")
-                    .arg(Arg::with_name("todo")
-                         .short("t")
-                         .long("todo")
+                    .arg(Arg::with_name("input")
+                         .short("i")
+                         .long("input")
                          .takes_value(true)
-                         .value_name("TODO")
+                         .value_name("INPUT")
                          .default_value("today")
                          .number_of_values(1)))
         .subcommand(SubCommand::with_name("log")
                     .name("log")
                     .about("Analyse and track your work habbits")
-                    .arg(Arg::with_name("option")
-                         .short("o")
-                         .long("option")
+                    .arg(Arg::with_name("input")
+                         .short("i")
+                         .long("input")
                          .takes_value(true)
-                         .value_name("OPTION")
+                         .value_name("INPUT")
                          .default_value("all")
                          .number_of_values(1)))
         .get_matches();
     
     match commands.subcommand() {
         ("todo",  Some(todo)) => {
-            match todo.value_of("source") {
-                Some("today") => todo::Todo::new(&date::Date::today()),
+            match todo.value_of("input") {
+                Some("today") => todo::Todo::new(date::Date::today()),
                 Some(title) => {
                     if title.ends_with(".md") {
                         todo::parse(title);
                     } else {
-                        todo::Todo::new(title)
+                        todo::Todo::new(String::from(title))
                     }                
                 }
                 _ => {},
@@ -74,19 +74,19 @@ fn main() {
         }
         
         ("clock", Some(clock)) => {
-            match clock.value_of("todo") {
+            match clock.value_of("input") {
                 Some("today") => {
                     if let Err(e) = detect_todo(&date::Date::today()) {
                         println!("{}", e);
                     } else {
-                        clock::countdown(KAI_DEFAULT_TIME, &date::Date::today()).unwrap();
+                        clock::countdown(KAI_DEFAULT_TIME, date::Date::today()).unwrap();
                     }
                 },
                 Some(title) => {
                     if let Err(e) = detect_todo(title) {
                         println!("{}", e);
                     } else {
-                        clock::countdown(KAI_DEFAULT_TIME, title).unwrap();
+                        clock::countdown(KAI_DEFAULT_TIME, title.to_string()).unwrap();
                     }
                 },
                 _ => {},
@@ -94,7 +94,7 @@ fn main() {
         },
 
         ("log", Some(log)) => {
-            match log.value_of("option") {
+            match log.value_of("input") {
                 Some("all") => {
                     log::all();
                 },
