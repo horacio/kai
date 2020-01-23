@@ -64,7 +64,7 @@ fn main() {
                 Some("today") => todo::Todo::new(date::Date::today()),
                 Some(title) => {
                     if title.ends_with(".md") {
-                        todo::parse(title);
+                        let parsed_todo = todo::parse(title);
                     } else {
                         todo::Todo::new(String::from(title))
                     }                

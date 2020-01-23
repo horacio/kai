@@ -7,7 +7,7 @@
 - [ ] Projects (Git branches)
 
 ## Core
-- [ ] Todo Tasks init file
+- [x] Todo Tasks init file
 - [ ] Todo task description (message)
 - [ ] Make `kai` the unit of time
 - [ ] User friendly Loader

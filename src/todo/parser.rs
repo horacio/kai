@@ -1,12 +1,15 @@
 use std::fs;
 use std::str;
 use std::error::Error;
+
 use crate::date;
 use crate::errors;
+use crate::db;
 
 use super::{Todo, Task};
 
-pub fn parse(filename: &str) -> Result<Todo, Box<dyn Error>>{
+
+pub fn parse(filename: &str) -> Result<(), Box<dyn Error>>{
     let file_bytes = fs::read(filename).expect("file not found");
     let contents = String::from_utf8(file_bytes).expect("File contains invalid utf characters");
     let mut lines = contents.lines();
@@ -15,7 +18,7 @@ pub fn parse(filename: &str) -> Result<Todo, Box<dyn Error>>{
     let mut line_count = 1;
     let mut tasks_index = 0;
     let mut tasks = vec![];
-    
+
     for line in lines {
         // Get todo title from markdown title
         if line.starts_with("# ") {
@@ -39,16 +42,21 @@ pub fn parse(filename: &str) -> Result<Todo, Box<dyn Error>>{
 
     if title != ""
         && tasks_index != 0
-        && tasks.len() > 0 {            
-            Ok(Todo{
+        && tasks.len() > 0 {
+            let todo =Todo{
                 title: String::from(title),
                 date_started: date,
                 date_ended: String::from("Ongoing"),
                 tasks: tasks,
                 pomodoros: Vec::new(),
                 total_time_spend: 0,                
-            })
+            };
+            
+            db::Database::store(&todo);
+            println!("{:?}", todo);
+            Ok(())
         } else {
+            println!("Unable to parse Todo Markdown file");
             Result::Err(Box::new(errors::TodoErr(
                 "Unable to parse Todo Markdown file".into(),
             )))
