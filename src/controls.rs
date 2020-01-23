@@ -52,7 +52,7 @@ pub fn ctrl_todo(mut todo: Todo) {
     }
 }
 
-pub fn ctrl_pomo(todo: &str, duration: u64) {
+pub fn ctrl_pomo(todo: String, duration: u64) {
     let mut user_input = String::new();
     loop {
         io::stdin()
@@ -68,7 +68,7 @@ pub fn ctrl_pomo(todo: &str, duration: u64) {
 
             // Check of a task
             "c\n" => {
-                let json_string = Database::get_todo(todo);
+                let json_string = Database::get_todo(todo.as_str());
                 let todo: Todo = serde_json::from_str(json_string.as_ref())
                     .expect("Todo is not a valid json value");
                 let mut count = 1;
@@ -104,7 +104,7 @@ pub fn ctrl_pomo(todo: &str, duration: u64) {
 
                 let task_number = task_number.trim();
                 let number_of_tasks = todo.tasks.len();
-                let todo_name = todo.title;
+                let todo_name = todo.title.clone();
 
                 match task_number.parse::<usize>() {
                     Ok(i) => {

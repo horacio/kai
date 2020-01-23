@@ -15,11 +15,11 @@ impl Database {
     // generate json and store to disk
     pub fn store(todo: &Todo) -> Result<()> {
         let json_string = serde_json::to_string(&todo)?;
-        save_to_disk(todo.title, &json_string);
+        save_to_disk(todo.title.as_str(), &json_string);
         Ok(())
     }
 
-    pub fn save_pomo(todo_name: &str, duration: u64) -> Result<()> {
+    pub fn save_pomo(todo_name: String, duration: u64) -> Result<()> {
         let home = dirs::home_dir().unwrap();
         let date = date::Date::today();
 
@@ -39,7 +39,7 @@ impl Database {
 
         let json_string = serde_json::to_string(&todo)?;
 
-        save_to_disk(todo_name, &json_string);
+        save_to_disk(todo_name.as_str(), &json_string);
         Ok(())
     }
 
@@ -77,7 +77,7 @@ impl Database {
         }
 
         let json_string = serde_json::to_string(&todo).unwrap();
-        save_to_disk(todo.title, &json_string);
+        save_to_disk(todo.title.as_str(), &json_string);
         Ok(())
     }
 }

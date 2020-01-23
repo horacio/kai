@@ -5,7 +5,7 @@ use crate::controls::{ctrl_pomo, Ctrl};
 use std::thread;
 use std::time::Duration;
 
-pub fn countdown(count_from: u64, todo_name: &str) -> Result<(), ()> {
+pub fn countdown(count_from: u64, todo_name: String) -> Result<(), ()> {
     let term = Term::stdout();
 
     term.clear_screen();

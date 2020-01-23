@@ -23,24 +23,24 @@ pub struct Task {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Todo<'a> {
-    pub title: &'a str,
-    pub date_started: &'a str,
-    pub date_ended: &'a str,
+pub struct Todo{
+    pub title: String,
+    pub date_started: String,
+    pub date_ended: String,
     pub tasks: Vec<Task>,
     pub pomodoros: Vec<Pomodoro>,
     pub total_time_spend: u64,
 }
 
-impl<'a> Todo<'a> {
-    pub fn new(title: &'a str) {
+impl Todo {
+    pub fn new(title: String) {
         let term = Term::stdout();
         let date = date::Date::today();
 
         let todo = Todo {
-            title,
-            date_started: &date.to_string(),
-            date_ended: "Ongoing",
+            title: title.clone(),
+            date_started: date.to_string(),
+            date_ended: String::from("Ongoing"),
             tasks: Vec::new(),
             pomodoros: Vec::new(),
             total_time_spend: 0,
@@ -64,7 +64,7 @@ impl<'a> Todo<'a> {
         );
         println!(
             "Enter tasks for [{}]: ",
-            style(format!("{}", title.to_string())).blue()
+            style(format!("{}", title)).blue()
         );
 
         ctrl_todo(todo);
