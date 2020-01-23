@@ -33,7 +33,6 @@ $ kai todo -i "Front-end stuff"
 Create a todo from a makrdown file:
 ```bash
 $ kai todo -i backend_todo.md
----
 ```
 
 The markdown file should have the following structure:
@@ -46,6 +45,7 @@ Tasks for the backend
 - [ ] Eat
 ```
 
+---
 #### clock
 Clock **today**'s todo for 25min (default)
 ```bash
