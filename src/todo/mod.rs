@@ -23,7 +23,7 @@ pub struct Task {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct Todo{
+pub struct Todo {
     pub title: String,
     pub date_started: String,
     pub date_ended: String,
@@ -62,10 +62,7 @@ impl Todo {
             "{}",
             style("+-----------------------------------------+").blue()
         );
-        println!(
-            "Enter tasks for [{}]: ",
-            style(format!("{}", title)).blue()
-        );
+        println!("Enter tasks for [{}]: ", style(format!("{}", title)).blue());
 
         ctrl_todo(todo);
     }
