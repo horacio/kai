@@ -8,8 +8,8 @@
 # Tasks
 
 ## Kai core
-- [x] Todo Tasks init file
-- [ ] <a name="todo-tasks-init-file"></a> Todo task description (message)
+- [x] <a name="todo-tasks-init-file"></a> Todo Tasks init file
+- [ ] Todo task description (message)
 - [ ] Make `kai` the unit of time
 - [ ] User friendly Loader
 - [ ] Stats (log)
