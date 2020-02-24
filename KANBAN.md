@@ -8,6 +8,7 @@
 # Tasks
 
 ## Kai core
+- [x] Todo Tasks init file
 - [ ] <a name="todo-tasks-init-file"></a> Todo task description (message)
 - [ ] Make `kai` the unit of time
 - [ ] User friendly Loader
@@ -39,5 +40,3 @@
 - [ ] User Profiles with git
 - [ ] Remote Git Sync
 - [ ] Projects (Git branche
-
-### [x] Todo Tasks init file
